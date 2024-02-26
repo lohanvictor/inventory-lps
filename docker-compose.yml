@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: dev
+    container_name: inventory-api
+    volumes: 
+      - .:/app
+    env_file:
+      - .env.development
+    networks:
+      - inventory-networks
+    ports:
+      - '8998:3000'
+    restart: always
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: inventory-mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - .data:/data/db
+    networks:
+      - inventory-networks
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_AUTH_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_AUTH_PASSWORD
+
+networks:
+  inventory-networks:
+    driver: bridge
+    name: inventory-networks
