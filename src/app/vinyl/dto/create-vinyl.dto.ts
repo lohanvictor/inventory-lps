@@ -1,11 +1,11 @@
 export interface ICreateVinylDto {
-  externalApiId: string;
+  externalId: string;
   name: string;
   cover: string;
   year: number;
   artist: {
     name: string;
-    externalApiId: string;
+    externalId: string;
   }[];
 }
 
@@ -13,6 +13,6 @@ export class CreateVinylDto implements ICreateVinylDto {
   name: string;
   cover: string;
   year: number;
-  artist: { name: string; externalApiId: string }[];
-  externalApiId: string;
+  artist: { name: string; externalId: string }[];
+  externalId: string;
 }

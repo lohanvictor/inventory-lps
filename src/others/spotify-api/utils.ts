@@ -10,7 +10,7 @@ export class SpotifyUtils {
         name: a.name,
       })),
       cover: externalObject.images[0].url,
-      id: externalObject.id,
+      externalId: externalObject.id,
       name: externalObject.name,
       year: releaseYear,
     };

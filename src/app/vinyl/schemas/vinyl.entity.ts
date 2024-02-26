@@ -1,20 +1,16 @@
-import { Prop, Schema, SchemaFactory, raw } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-
-export interface Artist {
-  name: string;
-  externalApiId: string;
-}
 
 export type VinylDocument = HydratedDocument<Vinyl>;
 
+interface Artist {
+  name: string;
+  externalId: string;
+}
 @Schema()
 export class Vinyl {
   @Prop()
-  _id: string;
-
-  @Prop()
-  externalApiId: string;
+  externalId: string;
 
   @Prop({ required: true })
   name: string;
@@ -25,13 +21,8 @@ export class Vinyl {
   @Prop()
   year: number;
 
-  @Prop([
-    raw({
-      name: { type: String },
-      externalApiId: { type: String },
-    }),
-  ])
-  artist: Artist[];
+  @Prop()
+  artists: Artist[];
 }
 
 export const VinylSchema = SchemaFactory.createForClass(Vinyl);

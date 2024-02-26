@@ -5,7 +5,7 @@ export interface FindAlbumRequest {
 }
 
 export interface FindAlbumResponse {
-  id: string;
+  externalId: string;
   name: string;
   year: number;
   cover: string;
