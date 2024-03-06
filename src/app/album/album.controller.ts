@@ -7,7 +7,7 @@ export class AlbumController {
   constructor(private readonly albumService: AlbumService) {}
 
   @Get('/filter')
-  findOne(@Query() body: FindAlbumRequest) {
-    return this.albumService.find(body);
+  findOne(@Query() params: FindAlbumRequest) {
+    return this.albumService.find(params);
   }
 }

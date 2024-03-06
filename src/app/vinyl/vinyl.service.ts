@@ -19,6 +19,10 @@ export class VinylService {
     return allVinyls;
   }
 
+  async remove(externalId: string) {
+    await this.vinylModel.deleteOne({ externalId });
+  }
+
   // findOne(id: number) {
   //   return `This action returns a #${id} vinyl`;
   // }

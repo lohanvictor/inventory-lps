@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete, Param } from '@nestjs/common';
 import { VinylService } from './vinyl.service';
 import { CreateVinylDto } from './dto/create-vinyl.dto';
 // import { UpdateVinylDto } from './dto/update-vinyl.dto';
@@ -27,8 +27,8 @@ export class VinylController {
   //   return this.vinylService.update(+id, updateVinylDto);
   // }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.vinylService.remove(+id);
-  // }
+  @Delete(':id')
+  remove(@Param('id') externalId: string) {
+    return this.vinylService.remove(externalId);
+  }
 }
