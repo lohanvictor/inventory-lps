@@ -7,6 +7,11 @@ interface Artist {
   name: string;
   externalId: string;
 }
+interface Track {
+  side: string;
+  name: string;
+  position: string;
+}
 @Schema()
 export class Vinyl {
   @Prop()
@@ -23,6 +28,9 @@ export class Vinyl {
 
   @Prop()
   artists: Artist[];
+
+  @Prop()
+  tracks: Track[];
 }
 
 export const VinylSchema = SchemaFactory.createForClass(Vinyl);
